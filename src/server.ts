@@ -58,9 +58,9 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
 app.get('/auth/google/callback',
     passport.authenticate('google', { session: false, failureRedirect:'/signin' }),
     (req:any, res) => {
-        res.cookie('userAccessT', req.user.accessToken, { httpOnly: true, maxAge: 15 * 60 * 1000 });
-        res.cookie('userRefreshT', req.user.refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
-
+        res.cookie('userAccessT', req.user.accessToken, { httpOnly: true, maxAge: 15 * 60 * 1000, sameSite: 'none', secure: process.env.NODE_ENV !== 'development' });
+        res.cookie('userRefreshT', req.user.refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000, sameSite: 'none', secure: process.env.NODE_ENV !== 'development' });
+        
         res.redirect(`${process.env.FRONTEND_URL}`)
     }
 )

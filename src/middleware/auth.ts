@@ -41,7 +41,7 @@ export const adminProtect = async (req: CustomRequest, res: Response, next: Next
             res.cookie('adminAccessT', newAccessToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'strict',
+                sameSite: 'none',
                 maxAge: 15 * 60 * 1000,
             });
 
@@ -86,7 +86,7 @@ export const userProtect = async (req: CustomRequest, res: Response, next: NextF
             res.cookie('adminAccessT', newAccessToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'strict',
+                sameSite: 'none',
                 maxAge: 15 * 60 * 1000,
             });
 
@@ -134,7 +134,7 @@ export const userUnProtect = async (req: CustomRequest, res: Response, next: Nex
             res.cookie('adminAccessT', newAccessToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'strict',
+                sameSite: 'none',
                 maxAge: 15 * 60 * 1000,
             });
 
@@ -186,7 +186,7 @@ export const resortProtect = async (req: CustomRequest, res: Response, next: Nex
             res.cookie('resortAccessT', newAccessToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'strict',
+                sameSite: 'none',
                 maxAge: 15 * 60 * 1000,
             });
 
