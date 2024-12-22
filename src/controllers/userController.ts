@@ -159,10 +159,14 @@ class UserController {
         try {
             res.cookie('userAccessT', '', {
                 httpOnly: true,
+                secure: process.env.NODE_ENV !== 'development',
+                sameSite: 'none',
                 expires: new Date(0),
             })
             res.cookie('userRefreshT', '', {
                 httpOnly: true,
+                secure: process.env.NODE_ENV !== 'development',
+                sameSite: 'none',
                 expires: new Date(0),
             })
 

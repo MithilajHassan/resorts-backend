@@ -73,13 +73,13 @@ class UserServices {
                     res.cookie('userRefreshT', refreshToken, {
                         httpOnly: true,
                         secure: process.env.NODE_ENV !== 'development',
-                        sameSite: 'strict',
+                        sameSite: 'none',
                         maxAge: 7 * 24 * 60 * 60 * 1000,
                     })
                     res.cookie('userAccessT', accessToken, {
                         httpOnly: true,
                         secure: process.env.NODE_ENV !== 'development',
-                        sameSite: 'strict',
+                        sameSite: 'none',
                         maxAge: 15 * 60 * 1000,
                     })
                 } else if (role == 'admin') {
@@ -89,13 +89,13 @@ class UserServices {
                     res.cookie('adminRefreshT', refreshToken, {
                         httpOnly: true,
                         secure: process.env.NODE_ENV !== 'development',
-                        sameSite: 'strict',
+                        sameSite: 'none',
                         maxAge: 7 * 24 * 60 * 60 * 1000,
                     })
                     res.cookie('adminAccessT', accessToken, {
                         httpOnly: true,
                         secure: process.env.NODE_ENV !== 'development',
-                        sameSite: 'strict',
+                        sameSite: 'none',
                         maxAge: 15 * 60 * 1000,
                     })
                 }

@@ -9,10 +9,14 @@ class AdminController {
         try {
             res.cookie('adminAccessT', '', {
                 httpOnly: true,
+                secure: process.env.NODE_ENV !== 'development',
+                sameSite: 'none',
                 expires: new Date(0),
             })
             res.cookie('adminRefreshT', '', {
                 httpOnly: true,
+                secure: process.env.NODE_ENV !== 'development',
+                sameSite: 'none',
                 expires: new Date(0),
             })
 
