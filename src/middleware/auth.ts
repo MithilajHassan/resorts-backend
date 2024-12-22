@@ -83,7 +83,7 @@ export const userProtect = async (req: CustomRequest, res: Response, next: NextF
             }
 
             const newAccessToken = generateAccessToken({ id: user._id as string, role: user.role });
-            res.cookie('adminAccessT', newAccessToken, {
+            res.cookie('userAccessT', newAccessToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
                 sameSite: 'none',
@@ -131,7 +131,7 @@ export const userUnProtect = async (req: CustomRequest, res: Response, next: Nex
             }
 
             const newAccessToken = generateAccessToken({ id: user._id as string, role: user.role });
-            res.cookie('adminAccessT', newAccessToken, {
+            res.cookie('userAccessT', newAccessToken, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV !== 'development',
                 sameSite: 'none',
@@ -161,7 +161,13 @@ export const resortProtect = async (req: CustomRequest, res: Response, next: Nex
             if (!resort) {
                 return res.status(401).json({ message: 'Not authorized, invalid token' })
             } else if (resort.isBlock) {
-                res.cookie('jwt', '', {
+                res.cookie('resortAccessT', '', {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV !== 'development',
+                    sameSite: 'none',
+                    expires: new Date(0),
+                })
+                res.cookie('resortAccessT', '', {
                     httpOnly: true,
                     secure: process.env.NODE_ENV !== 'development',
                     sameSite: 'none',

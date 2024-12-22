@@ -4,12 +4,13 @@ import { adminProtect } from "../middleware/auth"
 import bannerController from "../controllers/bannerController"
 import couponController from "../controllers/couponController"
 import resortAdminController from "../controllers/resortAdminController"
+import userController from "../controllers/userController"
 
 
 const adminRouter = Router()
 
+adminRouter.post('/signin', userController.signin)
 adminRouter.post('/signout', adminProtect, adminController.signout)
-// adminRouter.get('/verifyadmin', adminProtect, userController.verifyUser)
 
 //---------------------- Category Management -----------------------------------//
 adminRouter.get('/categories', adminProtect, adminController.listCategories)
